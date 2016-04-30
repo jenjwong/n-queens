@@ -38,40 +38,39 @@ window.findNRooksSolution = function(n) {
   };
 
   findSolution(0);
-  console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution));
   return solution;
 };
 
 
 // return the number of nxn chessboards that exist, with n rooks placed such that none of them can attack each other
 window.countNRooksSolutions = function(n) {
-  var solutionCount = 0; 
-  var board = new Board({'n': n});
-
-  var getCount = function(rowIndex) {
-    if (rowIndex === n) {
-      solutionCount ++;
-      return;
-    } 
-    for (var i = 0; i < n; i++) {
-      var colIndex = i;
-      board.togglePiece(rowIndex, colIndex);
-      if (!board.hasAnyRooksConflicts()) {
-        getCount(rowIndex + 1);  
-      }
-      board.togglePiece(rowIndex, colIndex);
-    }
-  };
-  getCount(0);
-  console.log('Number of solutions for ' + n + ' rooks:', solutionCount);
-  return solutionCount;
+  // var solutionCount = 0;
+  // var board = new Board({'n': n});
+  //
+  // var getCount = function(rowIndex) {
+  //   if (rowIndex === n) {
+  //     solutionCount ++;
+  //     return;
+  //   }
+  //   for (var i = 0; i < n; i++) {
+  //     var colIndex = i;
+  //     board.togglePiece(rowIndex, colIndex);
+  //     if (!board.hasAnyRooksConflicts()) {
+  //       getCount(rowIndex + 1);
+  //     }
+  //     board.togglePiece(rowIndex, colIndex);
+  //   }
+  // };
+  // getCount(0);
+  // console.log('Number of solutions for ' + n + ' rooks:', solutionCount);
+  // return solutionCount;
 };
 
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n queens placed such that none of them can attack each other
 window.findNQueensSolution = function(n) {
   var board = new Board({'n': n});
   var rows = board.rows();
-  var count = 0; 
+  var count = 0;
   var solution = rows;
 
   var findSolution = function(rowIndex) {
@@ -93,11 +92,10 @@ window.findNQueensSolution = function(n) {
         } else {
           board.togglePiece(rowIndex, colIndex);
         }
-      }  
+      }
     }
   };
   findSolution(0);
-  console.log('Single solution for ' + n + ' queens:', JSON.stringify(solution));
   return solution;
 };
 
@@ -105,12 +103,13 @@ window.findNQueensSolution = function(n) {
 window.countNQueensSolutions = function(n) {
   var board = new Board({'n': n});
   var rows = board.rows();
-  var count = 0; 
+  var count = 0;
   var solutionCount = 0;
-  
+
   var findSolution = function(rowIndex) {
     if (rows[rowIndex] === undefined) {
       if (count === n) {
+        debugger;
         solutionCount += 1;
         return;
       }
@@ -126,10 +125,9 @@ window.countNQueensSolutions = function(n) {
         } else {
           board.togglePiece(rowIndex, colIndex);
         }
-      }  
+      }
     }
   };
   findSolution(0);
-  console.log('Single solution for ' + n + ' queens:', JSON.stringify(solutionCount));
   return solutionCount;
 };

@@ -89,13 +89,13 @@
       if (counter > 1) {
         return true;
       } else {
-        return false; 
+        return false;
       }
-      
+
     },
 
 
-  
+
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
       var rows = this.rows();
@@ -130,7 +130,7 @@
       if (sum > 1) {
         return true;
       }
-      return false; 
+      return false;
     },
 
     // test if any columns on this board contain conflicts
@@ -143,7 +143,7 @@
           result = true;
         }
       });
-      return result; 
+      return result;
     },
 
 
@@ -157,7 +157,7 @@
       var rows = this.rows();
       //hold the sum in a variable
       var sum = 0;
-      
+
       //check to see if number is negative
        //set negativeIndex to number; i[0]
 
@@ -190,7 +190,7 @@
       return false;
     },
 
-    
+
 
 
     // test if any major diagonals on this board contain conflicts
@@ -204,7 +204,7 @@
           result = true;
         }
       }
-      return result; 
+      return result;
     },
 
 
@@ -218,7 +218,7 @@
       var rows = this.rows();
       //hold the sum in a variable
       var sum = 0;
-      
+
       //check to see if number is greater than last element in rows
       //if virtual column index
 
@@ -250,20 +250,22 @@
       if (sum > 1) {
         return true;
       }
-      // return false; 
+      // return false;
     },
+
+
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
       var rows = this.rows();
       var context = this;
       var result = false;
-      for (var i = rows.length + 1; i >= 0; i--) {
+      for (var i = rows.length + (rows.length - 3); i >= 1; i--) {
         if (context.hasMinorDiagonalConflictAt(i)) {
           result = true;
         }
       }
-      return result; 
+      return result;
     }
 
     /*--------------------  End of Helper Functions  ---------------------*/
